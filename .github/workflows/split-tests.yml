@@ -21,8 +21,8 @@ jobs:
           INDEX_LIST=$(seq 0 ${MAX_INDEX})
           INDEX_JSON=$(jq --null-input --compact-output '. |= [inputs]' <<< ${INDEX_LIST})
           echo "::set-output name=json::${INDEX_JSON}"
-      - id: echoStatement
-        run: cat ${INDEX_JSON}
+      - name: Print JSON array
+        run: echo ${{ steps.generate-index-list.outputs.json }}
   run-parallel-tests:
     runs-on: ubuntu-latest
     name: "Runner #${{ matrix.runner-index }}: Run test suite in parallel"
