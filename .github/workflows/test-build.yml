@@ -1,0 +1,44 @@
+name: Build
+
+description: Dummy for testing
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+      
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: sleep 10 
+      - run: echo tags are ${{ inputs.tags }} 
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - run: ls -lrta
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.logLevel}}
