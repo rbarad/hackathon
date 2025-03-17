@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  total-runners: 5
+  total-runners: 2
 
 jobs:
   runner-indexes:
