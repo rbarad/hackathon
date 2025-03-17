@@ -34,7 +34,7 @@ jobs:
         id: split-tests
         name: Split tests
         with:
-          glob: /home/barar/work/code/prpc-platform/test/giza/coreui/runtime_regression/featuresets/DynamicUI/SectionInclude/spec/*.rb
+          glob: /home/barar/work/code/prpc-platform/test/cucumber-webdriver/Tests/PRPC/UI/Section/gherkin/*.feature
           split-total: ${{ env.total-runners }}
           split-index: ${{ matrix.runner-index }}
           line-count: true
